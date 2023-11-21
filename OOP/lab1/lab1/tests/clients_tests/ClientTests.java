@@ -1,13 +1,14 @@
-package users;
+package clients_tests;
 
 //import org.junit.jupiter.api.Assertions;
+import lab1.clients.Client;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-import tariffs.Tariff;
-import tariffs.availableTariffs.BasicTariff;
-import tariffs.availableTariffs.ProTariff;
+import lab1.tariffs.Tariff;
+import lab1.tariffs.availableTariffs.BasicTariff;
+import lab1.tariffs.availableTariffs.ProTariff;
 
 public class ClientTests {
     @Test

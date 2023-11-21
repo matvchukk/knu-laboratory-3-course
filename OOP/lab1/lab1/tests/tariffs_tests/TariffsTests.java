@@ -1,9 +1,11 @@
-package tariffs;
+package tariffs_tests;
 
+import lab1.tariffs.Characteristics;
+import lab1.tariffs.Tariff;
 import org.junit.jupiter.api.Test;
-import tariffs.availableTariffs.BasicTariff;
-import tariffs.availableTariffs.ProTariff;
-import tariffs.availableTariffs.StandardTariff;
+import lab1.tariffs.availableTariffs.BasicTariff;
+import lab1.tariffs.availableTariffs.ProTariff;
+import lab1.tariffs.availableTariffs.StandardTariff;
 
 import java.util.List;
 

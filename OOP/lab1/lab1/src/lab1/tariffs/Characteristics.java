@@ -1,4 +1,4 @@
-package tariffs;
+package lab1.tariffs;
 
 public enum Characteristics {
     CALLS("calls"),

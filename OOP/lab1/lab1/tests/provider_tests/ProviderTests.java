@@ -1,11 +1,13 @@
-package users;
+package provider_tests;
 
+import lab1.clients.Client;
+import lab1.providers.Provider;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import tariffs.Tariff;
-import tariffs.availableTariffs.BasicTariff;
-import tariffs.availableTariffs.ProTariff;
+import lab1.tariffs.Tariff;
+import lab1.tariffs.availableTariffs.BasicTariff;
+import lab1.tariffs.availableTariffs.ProTariff;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package users;
+package lab1.clients;
 
-import tariffs.Tariff;
+import lab1.tariffs.Tariff;
 
 public class Client {
     private final int personalId = (int)(Math.random() * 100_000);;
@@ -9,7 +9,6 @@ public class Client {
     public Client(Tariff personalTariff) {
         this.personalTariff = personalTariff;
     }
-
     public int getId() {
         return personalId;
     }
@@ -20,9 +19,5 @@ public class Client {
 
     public Tariff getTariff() {
         return this.personalTariff;
-    }
-
-    public void printClientInfo() {
-        System.out.println("Client: " + this.personalId + " Active tariff: ...");
     }
 }
