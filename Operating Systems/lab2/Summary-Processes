@@ -1,0 +1,8 @@
+Process: 4 with priority 4 registered... (1032 400 0)
+Process: 4 with priority 4 I/O blocked... (1032 400 400)
+Process: 3 with priority 3 registered... (1032 300 0)
+Process: 4 with priority 4 unblocked... (1032 400 400)
+Process: 3 with priority 3 stopped working... (1032 300 100)
+Process: 4 with priority 4 registered... (1032 400 400)
+Process: 4 with priority 4 I/O blocked... (1032 400 800)
+Process: 3 with priority 3 registered... (1032 300 100)
