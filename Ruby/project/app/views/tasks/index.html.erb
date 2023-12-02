@@ -1,0 +1,49 @@
+<style>
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="container">
+  <h1>Tasks</h1>
+
+  <ul>
+   <li>
+      Course with maximum percentage of male students
+      <%= link_to "See Results", show_max_male_course_queries_path, class: "button" %>
+    </li>
+    <li>
+      The most common male name
+      <%= link_to "See Results", show_most_common_male_name_queries_path, class: "button" %>
+    </li>
+    <li>
+      The most common female name
+      <%= link_to "See Results", show_most_common_female_name_queries_path, class: "button" %>
+    </li>
+    <li>
+      Female students of the most common age
+      <%= link_to "See Results", show_females_of_most_common_age_queries_path, class: "button" %>
+    </li>
+    <li>
+    #   Course with maximum percentage of male students
+    #   <%= link_to "See Results", quality_of_performance_tasks_path, class: "button" %>
+    # </li>
+    # <li>
+    #   The most common male name
+    #   <%= link_to "See Results", best_subject_tasks_path, class: "button" %>
+    # </li>
+    # <li>
+    #   The most common female name
+    #   <%= link_to "See Results", percentage_of_students_with_high_grades_tasks_path, class: "button" %>
+    # </li>
+    # <li>
+    #   Female students of the most common age
+    #   <%= link_to "See Results", students_with_arrears_tasks_path, class: "button" %>
+    # </li>
+  </ul>
+
+  <%= link_to "Main Page", root_path, class: "button" %>
+</div>

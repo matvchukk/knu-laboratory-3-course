@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>The most common male name is <%= @most_common_male_name %></h1>
+
+  <%= render "table", students_list: @best_subject %>
+
+  <br><%= link_to "Go Back", tasks_path, class: "button" %>
+</div>

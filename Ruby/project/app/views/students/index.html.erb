@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Students</h1>
+
+  <%= link_to "Add Student", new_student_path, class: "button" %>
+  <%= link_to "Tasks", tasks_path, class: "button" %>
+
+  <br><br>Currently, <span class="enrolled-count"><%= Student.enrolled_count %></span> students are enrolled
+
+  <ul>
+    <% @students.each do |student| %>
+      <% unless student.academ_leave? %>
+        <li>
+          <%= link_to student.format_short, student %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <br>Currently, <span class="leave-count"><%= Student.academ_leave_count %></span> students are on academic leave
+
+  <ul>
+    <% @students.each do |student| %>
+      <% if student.academ_leave? %>
+        <li>
+          <%= link_to student.format_short, student %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

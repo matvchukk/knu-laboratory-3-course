@@ -1,0 +1,66 @@
+<%= form_with model: @student, class: "form-container" do |form| %>
+  <div class="form-field">
+    <%= form.label :first_name, class: "form-label" %><br>
+    <%= form.text_field :first_name, class: "form-input" %>
+    <% @student.errors.full_messages_for(:first_name).each do |message| %>
+      <div class="form-error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :middle_name, class: "form-label" %><br>
+    <%= form.text_field :middle_name, class: "form-input" %>
+    <% @student.errors.full_messages_for(:middle_name).each do |message| %>
+      <div class="form-error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :last_name, class: "form-label" %><br>
+    <%= form.text_field :last_name, class: "form-input" %>
+    <% @student.errors.full_messages_for(:last_name).each do |message| %>
+      <div class="form-error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :group, class: "form-label" %><br>
+    <%= form.text_field :group, class: "form-input" %>
+    <% @student.errors.full_messages_for(:group).each do |message| %>
+      <div class="form-error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :algebra_score, class: "form-label" %><br>
+    <%= form.number_field :algebra_score, min: 0, step: 1, class: "form-input" %>
+    <% @student.errors.full_messages_for(:algebra_score).each do |message| %>
+      <div class="form-error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :geometry_score, class: "form-label" %><br>
+    <%= form.number_field :geometry_score, min: 1, max: 10, step: 1, class: "form-input" %>
+    <% @student.errors.full_messages_for(:geometry_score).each do |message| %>
+      <div class="form-error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :computer_science_score, class: "form-label" %><br>
+    <%= form.number_field :computer_science_score, min: 1, max: 10, step: 1, class: "form-input" %>
+    <% @student.errors.full_messages_for(:computer_science_score).each do |message| %>
+      <div class="form-error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :freshman_state, class: "form-label" %><br>
+    <%= form.select :freshman_state, Visible::VALID_STATUSES, selected: student.freshman_state || 'enrolled', class: "form-select" %>
+  </div>
+
+  <div class="form-field">
+    <%= form.submit "Submit", class: "form-submit" %>
+  </div>
+<% end %>
