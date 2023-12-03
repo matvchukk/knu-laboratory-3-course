@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeviceShop>
+    <Device>
+        <id>1</id>
+        <name>AMD Ryzen 9 5900X</name>
+        <origin>USA</origin>
+        <price>700</price>
+        <critical>true</critical>
+        <types>
+            <peripheral>false</peripheral>
+            <energyConsumption>105</energyConsumption>
+            <cooler>true</cooler>
+            <group>CPU</group>
+            <port>Not Applicable</port>
+        </types>
+    </Device>
+    <Device>
+        <id>2</id>
+        <name>Logitech G Pro X Mechanical Gaming Keyboard</name>
+        <origin>Switzerland</origin>
+        <price>150</price>
+        <critical>false</critical>
+        <types>
+            <peripheral>true</peripheral>
+            <energyConsumption>2</energyConsumption>
+            <cooler>false</cooler>
+            <group>Input</group>
+            <port>USB</port>
+        </types>
+    </Device>
+    <Device>
+        <id>3</id>
+        <name>Samsung 970 EVO Plus 1TB NVMe M.2 Internal SSD</name>
+        <origin>South Korea</origin>
+        <price>180</price>
+        <critical>true</critical>
+        <types>
+            <peripheral>false</peripheral>
+            <energyConsumption>5</energyConsumption>
+            <cooler>false</cooler>
+            <group>Storage</group>
+            <port>Not Applicable</port>
+        </types>
+    </Device>
+    <Device>
+        <id>4</id>
+        <name>Canon PIXMA Pro-100 Wireless Color Professional Inkjet Printer</name>
+        <origin>Japan</origin>
+        <price>400</price>
+        <critical>false</critical>
+        <types>
+            <peripheral>true</peripheral>
+            <energyConsumption>30</energyConsumption>
+            <cooler>false</cooler>
+            <group>Printer</group>
+            <port>USB</port>
+        </types>
+    </Device>
+</DeviceShop>
