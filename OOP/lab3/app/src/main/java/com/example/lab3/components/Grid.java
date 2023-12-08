@@ -1,15 +1,14 @@
-package com.example.lab3;
+package com.example.lab3.components;
 
 import java.util.Random;
 
 public class Grid {
     private static final Random rand = new Random(System.currentTimeMillis());
+    private int size;
+    public int[][] grid;
+    public int score = 0;
 
-    int[][] grid;
-    int size;
-    int score = 0;
-
-    Grid(int size) {
+    public Grid(int size) {
         this.size = size;
         restart();
     }
@@ -68,8 +67,6 @@ public class Grid {
                 i++;
             };
         }
-//    grid[rand.nextInt(size)][rand.nextInt(size)] = 2;
-//    grid[rand.nextInt(size)][rand.nextInt(size)] = 2;
     }
 
     public void restart() {
@@ -81,5 +78,30 @@ public class Grid {
         }
         gen();
         score = 0;
+    }
+    public boolean isGameOver(BricksManager bar) {
+        for (int i = 0; i < bar.bricks.length; i++) {
+            int[][] brick = bar.get(i);
+            for (int x = 0; x <= size - brick.length; x++) {
+                for (int y = 0; y <= size - brick[0].length; y++) {
+                    boolean canPlace = true;
+                    for (int bx = 0; bx < brick.length; bx++) {
+                        for (int by = 0; by < brick[0].length; by++) {
+                            if (brick[bx][by] == 1 && grid[x + bx][y + by] != 0) {
+                                canPlace = false;
+                                break;
+                            }
+                        }
+                        if (!canPlace) {
+                            break;
+                        }
+                    }
+                    if (canPlace) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

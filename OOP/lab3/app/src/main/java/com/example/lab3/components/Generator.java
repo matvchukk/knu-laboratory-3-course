@@ -1,8 +1,8 @@
-package com.example.lab3;
+package com.example.lab3.components;
 import java.util.Random;
 
 public class Generator {
-    static int[][][] bricks = {{
+    private static int[][][] bricks = {{
             {1}
     },{
             {1,1,1},

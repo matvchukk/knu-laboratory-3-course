@@ -1,9 +1,9 @@
-package com.example.lab3;
+package com.example.lab3.components;
 
-public class BrickBar {
-    int[][][] bricks;
+public class BricksManager {
+    public int[][][] bricks;
 
-    BrickBar(int size) {
+    public BricksManager(int size) {
         bricks = new int[size][][];
         for (int i = 0; i < size; i++)
             bricks[i] = Generator.generate();
