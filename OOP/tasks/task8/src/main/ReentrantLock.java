@@ -1,54 +1,43 @@
 package main;
-
 public class ReentrantLock {
+    private final Object obj = new Object();
+    private Thread owner = null;
+    private int lockCount = 0;
 
-    private long lockedTreadId = -1;
-    private int holdCount = 0;
+    public void lock() throws InterruptedException {
+        synchronized (obj) {
+            if (owner == Thread.currentThread()) {
+                lockCount++;
+                return;
+            }
 
-    public synchronized void lock() throws InterruptedException {
-        if (holdCount == 0) {
-            lockedTreadId = Thread.currentThread().getId();
-            holdCount++;
-        }
-        else if (Thread.currentThread().getId() == lockedTreadId) {
-            holdCount++;
-        }
-        else {
-            while (holdCount > 0)
-                wait();
-            lockedTreadId = Thread.currentThread().getId();
-            holdCount++;
+            while (owner != null) {
+                obj.wait();
+            }
+
+            owner = Thread.currentThread();
+            lockCount = 1;
         }
     }
 
-    public synchronized void unlock() {
-        holdCount--;
-        if (holdCount == 0) {
-            lockedTreadId = -1;
-            notify();
+    public void unlock() {
+        synchronized (obj) {
+            if (owner != Thread.currentThread()) {
+                throw new IllegalStateException("Lock usage error");
+            }
+
+            lockCount--;
+
+            if (lockCount == 0) {
+                owner = null;
+                obj.notify();
+            }
+        }
+    }
+    public int getLockCount() {
+        synchronized (obj) {
+            return lockCount;
         }
     }
 
-    public synchronized boolean tryLock() {
-        if (holdCount == 0) {
-            lockedTreadId = Thread.currentThread().getId();
-            holdCount++;
-            return true;
-        }
-        else if (Thread.currentThread().getId() == lockedTreadId) {
-            holdCount++;
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public synchronized int getHoldCount() {
-        return holdCount;
-    }
-
-    public synchronized boolean isHeldByCurrentThread() {
-        return Thread.currentThread().getId() == lockedTreadId;
-    }
 }
