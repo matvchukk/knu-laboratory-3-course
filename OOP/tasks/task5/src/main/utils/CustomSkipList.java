@@ -169,6 +169,8 @@ public class CustomSkipList {
         return currentNode;
     }
 
+
+
     public boolean remove(Integer inputValue){
         Node[] update = new Node[maxLevel];
         Node currentNode = formUpdateArray(update, inputValue);
