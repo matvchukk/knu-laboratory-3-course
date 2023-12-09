@@ -8,6 +8,7 @@ public class Device {
     private Boolean critical; //is it critical to have a computer component for operation?
     private Types types;
 
+    public Device() {}
     public String getName() {return name;}
     public void setName(String value) {this.name = value;}
 
@@ -16,8 +17,12 @@ public class Device {
 
     public Integer getPrice() {return price;}
     public void setPrice(Integer value) {this.price = value;}
-
-    public Types getTypes() {return types;}
+    public Types getTypes() {
+        if (types == null) {
+            types = new Types();
+        }
+        return types;
+    }
     public void setTypes(Types value) {this.types = value;}
 
     public boolean isCritical() {return critical;}

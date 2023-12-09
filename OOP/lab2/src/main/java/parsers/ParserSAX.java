@@ -1,20 +1,24 @@
 package main.java.parsers;
 import main.java.models.Device;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Collections;
+import main.java.models.DeviceComparator;
 public class ParserSAX {
-    public List<Device> parseSAX(File xml) throws SAXException, IOException, ParserConfigurationException {
-        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-        SAXParser saxParser = saxParserFactory.newSAXParser();
-        DeviceHandler deviceHandler = new DeviceHandler();
-        saxParser.parse(xml, deviceHandler);
-        return deviceHandler.getDeviceList();
+    public static List<Device> parseSAX(File xml){
+        List<Device> list = new ArrayList<>();
+        try {
+            SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+            DeviceHandler deviceHandler = new DeviceHandler();
+            parser.parse(xml, deviceHandler);
+            list = deviceHandler.getDeviceList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

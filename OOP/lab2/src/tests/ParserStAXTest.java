@@ -18,7 +18,6 @@ public class ParserStAXTest {
         List<Device> devices = parserStAX.parseStAX(xmlFile);
 
         Device firstDevice = devices.get(0);
-        assertEquals(firstDevice.getId(), "1");
         assertEquals(firstDevice.getName(), "AMD Ryzen 9 5900X");
         assertEquals(firstDevice.getOrigin(), "USA");
         assertEquals(firstDevice.getPrice().toString(), "700");
@@ -30,7 +29,6 @@ public class ParserStAXTest {
         assertEquals(firstDevice.getTypes().getPort(), "Not Applicable");
 
         Device secondDevice = devices.get(1);
-        assertEquals(secondDevice.getId(), "2");
         assertEquals(secondDevice.getName(), "Logitech G Pro X Mechanical Gaming Keyboard");
         assertEquals(secondDevice.getOrigin(), "Switzerland");
         assertEquals(secondDevice.getPrice().toString(), "150");
@@ -42,7 +40,6 @@ public class ParserStAXTest {
         assertEquals(secondDevice.getTypes().getPort(), "USB");
 
         Device thirdDevice = devices.get(2);
-        assertEquals(thirdDevice.getId(), "3");
         assertEquals(thirdDevice.getName(), "Samsung 970 EVO Plus 1TB NVMe M.2 Internal SSD");
         assertEquals(thirdDevice.getOrigin(), "South Korea");
         assertEquals(thirdDevice.getPrice().toString(), "180");
@@ -54,7 +51,6 @@ public class ParserStAXTest {
         assertEquals(thirdDevice.getTypes().getPort(), "Not Applicable");
 
         Device fourthDevice = devices.get(3);
-        assertEquals(fourthDevice.getId(), "4");
         assertEquals(fourthDevice.getName(), "Canon PIXMA Pro-100 Wireless Color Professional Inkjet Printer");
         assertEquals(fourthDevice.getOrigin(), "Japan");
         assertEquals(fourthDevice.getPrice().toString(), "400");

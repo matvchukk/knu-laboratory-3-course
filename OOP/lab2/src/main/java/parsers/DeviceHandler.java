@@ -1,78 +1,92 @@
 package main.java.parsers;
+
 import main.java.models.Device;
 import main.java.models.Elements;
-import main.java.models.Types;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class DeviceHandler extends DefaultHandler {
-    private String valueOfElement;
-    private List<Device> deviceList = new ArrayList<>();
+    private List<Device> devicesList = new ArrayList<>();
+    private Device currentDevice;
+    private String currentElementType;
 
-    @Override
-    public void startElement(String url, String name, String attributeName, Attributes attributes) {
-        switch(attributeName){
-            case Elements.DEVICE:
-                Device device = new Device();
-                deviceList.add(device);
-                break;
-            case Elements.TYPES:
-                Types types = new Types();
-                getLastDevice().setTypes(types);
-                break;
-        }
+    public List getDeviceList() {
+        return devicesList;
     }
 
     @Override
-    public void endElement(String uri, String name, String attributeName) {
-        switch(attributeName) {
-            case Elements.ID -> getLastDevice().setId(valueOfElement);
-            case Elements.NAME -> getLastDevice().setName(valueOfElement);
-            case Elements.ORIGIN -> getLastDevice().setOrigin(valueOfElement);
-            case Elements.PRICE -> getLastDevice().setPrice(Integer.valueOf(valueOfElement));
-            case Elements.CRITICAL -> getLastDevice().setCritical(Boolean.parseBoolean(valueOfElement));
-            case Elements.PERIPHERAL -> getLastDevice().getTypes().setPeripherals(Boolean.parseBoolean(valueOfElement));
-            case Elements.ENERGY_CONSUMPTION -> getLastDevice().getTypes().setEnergyConsumption(Short.parseShort(valueOfElement));
-            case Elements.COOLER -> getLastDevice().getTypes().setCooler(Boolean.parseBoolean(valueOfElement));
-            case Elements.GROUP -> getLastDevice().getTypes().setGroup(valueOfElement);
-            case Elements.PORT -> getLastDevice().getTypes().setPort(valueOfElement);
+    public void startElement(String uri, String localName, String qName, Attributes attrs) {
+        if (qName.equals("Device")) {
+            currentDevice = new Device();
+            currentDevice.setId(attrs.getValue(0));
         }
+        if (qName.equals("name"))
+            currentElementType = Elements.NAME;
+        else if (qName.equals("origin"))
+            currentElementType = Elements.ORIGIN;
+        else if (qName.equals("price"))
+            currentElementType = Elements.PRICE;
+        else if (qName.equals("critical"))
+            currentElementType = Elements.CRITICAL;
+        else if (qName.equals("peripheral"))
+            currentElementType = Elements.PERIPHERAL;
+        else if (qName.equals("energyConsumption"))
+            currentElementType = Elements.ENERGY_CONSUMPTION;
+        else if (qName.equals("cooler"))
+            currentElementType = Elements.COOLER;
+        else if (qName.equals("group"))
+            currentElementType = Elements.GROUP;
+        else if (qName.equals("port"))
+            currentElementType = Elements.PORT;
     }
 
-    public void setField(String attributeName, String str, Map<String, String> attributes) {
-        switch(attributeName) {
-            case Elements.DEVICE -> {
-                Device device = new Device();
-                deviceList.add(device);
+    @Override
+    public void endElement(String uri, String localName, String qName) {
+        if (qName.equals("Device"))
+            devicesList.add(currentDevice);
+    }
+
+    @Override
+    public void characters(char[] ch, int start, int length) {
+        String valueOfElement = new String(ch, start, length).trim(); // Trim whitespace
+
+        if (!valueOfElement.isEmpty()){
+            try {
+                switch (currentElementType) {
+                    case Elements.NAME:
+                        currentDevice.setName(valueOfElement);
+                        break;
+                    case Elements.ORIGIN:
+                        currentDevice.setOrigin(valueOfElement);
+                        break;
+                    case Elements.PRICE:
+                        currentDevice.setPrice(Integer.valueOf(valueOfElement));
+                        break;
+                    case Elements.CRITICAL:
+                        currentDevice.setCritical(Boolean.parseBoolean(valueOfElement));
+                        break;
+                    case Elements.PERIPHERAL:
+                        currentDevice.getTypes().setPeripherals(Boolean.parseBoolean(valueOfElement));
+                        break;
+                    case Elements.ENERGY_CONSUMPTION:
+                        currentDevice.getTypes().setEnergyConsumption(Short.parseShort(valueOfElement));
+                        break;
+                    case Elements.COOLER:
+                        currentDevice.getTypes().setCooler(Boolean.parseBoolean(valueOfElement));
+                        break;
+                    case Elements.GROUP:
+                        currentDevice.getTypes().setGroup(valueOfElement);
+                        break;
+                    case Elements.PORT:
+                        currentDevice.getTypes().setPort(valueOfElement);
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
             }
-            case Elements.NAME -> getLastDevice().setName(str);
-            case Elements.ID -> getLastDevice().setId(str);
-            case Elements.ORIGIN -> getLastDevice().setOrigin(str);
-            case Elements.PRICE -> getLastDevice().setPrice(Integer.valueOf(str));
-            case Elements.CRITICAL -> getLastDevice().setCritical(Boolean.parseBoolean(str));
-            case Elements.PERIPHERAL -> getLastDevice().getTypes().setPeripherals(Boolean.parseBoolean(str));
-            case Elements.ENERGY_CONSUMPTION -> getLastDevice().getTypes().setEnergyConsumption(Short.parseShort(str));
-            case Elements.COOLER -> getLastDevice().getTypes().setCooler(Boolean.parseBoolean(str));
-            case Elements.PORT -> getLastDevice().getTypes().setPort(str);
-            case Elements.GROUP -> getLastDevice().getTypes().setGroup(str);
-            case Elements.TYPES -> {
-                Types types = new Types();
-                getLastDevice().setTypes(types);
-            }
-
         }
     }
-
-    public List<Device> getDeviceList() { return deviceList; }
-    @Override
-    public void startDocument() throws SAXException {deviceList = new ArrayList<>();}
-    @Override
-    public void characters(char[] ch, int start, int length) throws SAXException { valueOfElement = new String(ch, start, length);}
-    private Device getLastDevice() {return deviceList.get(deviceList.size() - 1);}
-    public String getName() {return Elements.DEVICE;};
 }

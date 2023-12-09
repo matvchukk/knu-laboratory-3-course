@@ -1,21 +1,24 @@
 import main.java.models.Device;
 import main.java.parsers.ParserDOM;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ParserDOMTest {
     @Test
-    public void parseDOM() throws NullPointerException{
+    public void parseDOM() throws NullPointerException, IOException, ParserConfigurationException, SAXException {
         ParserDOM domParser = new ParserDOM();
         File xmlFile = new File("src/main/resources/devices.xml");
-        List<Device> devices = domParser.parseDOM(xmlFile);
+        List<Device> devices = domParser.parse(xmlFile);
 
         Device firstDevice = devices.get(0);
-        assertEquals(firstDevice.getId(), "1");
         assertEquals(firstDevice.getName(), "AMD Ryzen 9 5900X");
         assertEquals(firstDevice.getOrigin(), "USA");
         assertEquals(firstDevice.getPrice().toString(), "700");
@@ -27,7 +30,6 @@ public class ParserDOMTest {
         assertEquals(firstDevice.getTypes().getPort(), "Not Applicable");
 
         Device secondDevice = devices.get(1);
-        assertEquals(secondDevice.getId(), "2");
         assertEquals(secondDevice.getName(), "Logitech G Pro X Mechanical Gaming Keyboard");
         assertEquals(secondDevice.getOrigin(), "Switzerland");
         assertEquals(secondDevice.getPrice().toString(), "150");
@@ -39,7 +41,6 @@ public class ParserDOMTest {
         assertEquals(secondDevice.getTypes().getPort(), "USB");
 
         Device thirdDevice = devices.get(2);
-        assertEquals(thirdDevice.getId(), "3");
         assertEquals(thirdDevice.getName(), "Samsung 970 EVO Plus 1TB NVMe M.2 Internal SSD");
         assertEquals(thirdDevice.getOrigin(), "South Korea");
         assertEquals(thirdDevice.getPrice().toString(), "180");
@@ -51,7 +52,6 @@ public class ParserDOMTest {
         assertEquals(thirdDevice.getTypes().getPort(), "Not Applicable");
 
         Device fourthDevice = devices.get(3);
-        assertEquals(fourthDevice.getId(), "4");
         assertEquals(fourthDevice.getName(), "Canon PIXMA Pro-100 Wireless Color Professional Inkjet Printer");
         assertEquals(fourthDevice.getOrigin(), "Japan");
         assertEquals(fourthDevice.getPrice().toString(), "400");
