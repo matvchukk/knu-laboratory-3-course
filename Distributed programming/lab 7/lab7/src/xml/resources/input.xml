@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<VideoStore>
+    <Genre id="1" name="Drama">
+        <Film filmDirector="Frank Darabont" filmGenreId="1" id="1" isInTop="false" name="The Shawshank Redemption"/>
+        <Film filmDirector="Robert Zemeckis" filmGenreId="1" id="2" isInTop="false" name="Forrest Gump"/>
+        <Film filmDirector="Francis Ford Coppola" filmGenreId="1" id="3" isInTop="false" name="The Godfather"/>
+        <Film filmDirector="Peter Farrelly" filmGenreId="1" id="4" isInTop="false" name="Dumb and Dumber"/>
+        <Film filmDirector="Greg Mottola" filmGenreId="1" id="5" isInTop="false" name="Superbad"/>
+        <Film filmDirector="Adam McKay" filmGenreId="1" id="6" isInTop="false" name="Anchorman"/>
+        <Film filmDirector="Ridley Scott" filmGenreId="1" id="7" isInTop="false" name="Blade Runner"/>
+        <Film filmDirector="Lana Wachowski, Lilly Wachowski" filmGenreId="1" id="8" isInTop="false" name="The Matrix"/>
+        <Film filmDirector="Christopher Nolan" filmGenreId="1" id="9" isInTop="false" name="Inception"/>
+    </Genre>
+    <Genre id="2" name="Comedy"/>
+    <Genre id="3" name="Science Fiction">
+        <Film filmDirector="Someone" filmGenreId="3" id="1269015068" isInTop="false" name="Film"/>
+    </Genre>
+</VideoStore>

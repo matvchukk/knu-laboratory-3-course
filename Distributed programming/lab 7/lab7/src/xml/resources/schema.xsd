@@ -1,0 +1,27 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="VideoStore">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Genre" type="Genre" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Genre">
+        <xs:sequence>
+            <xs:element name="Film" type="Film" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+        <xs:attribute name="id" type="xs:integer"/>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="Film">
+        <xs:attribute name="id" type="xs:integer"/>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="isInTop" type="xs:boolean"/>
+        <xs:attribute name="filmGenreId" type="xs:integer"/>
+        <xs:attribute name="filmDirector" type="xs:string"/>
+    </xs:complexType>
+
+</xs:schema>
