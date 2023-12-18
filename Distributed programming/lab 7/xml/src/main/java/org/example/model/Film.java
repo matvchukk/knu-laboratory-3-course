@@ -1,4 +1,4 @@
-package xml.model;
+package org.example.model;
 
 public class Film {
     public Integer id;

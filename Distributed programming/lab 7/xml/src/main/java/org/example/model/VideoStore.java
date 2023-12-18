@@ -1,6 +1,6 @@
-package xml.model;
+package org.example.model;
+
 import java.util.*;
-import java.util.Random;
 
 public class VideoStore {
 

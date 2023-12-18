@@ -1,9 +1,9 @@
-package xml.utils;
+package org.example.utils;
 
 import java.io.File;
 
-public final class Constants {
-    private Constants() {}
+public final class Utils {
+    private Utils() {}
 
     // XML tags
     public static final String VIDEO_STORE = "VideoStore";
@@ -17,8 +17,9 @@ public final class Constants {
 
     //Paths to files
     public static final String PATH_TO_XML =
-            String.join(File.separator, ".", "src", "xml", "resources", "input.xml");
+            String.join(File.separator, "xml", "src", "main", "resources", "video_store.xml");
 
     public static final String PATH_TO_XSD =
-            String.join(File.separator, ".", "src", "xml", "resources", "schema.xsd");
+            String.join(File.separator, "xml", "src", "main", "resources", "video_store.xsd");
+
 }
