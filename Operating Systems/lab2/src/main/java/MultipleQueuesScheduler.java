@@ -13,6 +13,7 @@ public class MultipleQueuesScheduler{
         Collections.sort(processVector, new Comparator<sProcess>() {
                     @Override
                     public int compare(sProcess p1, sProcess p2) {
+
                         return p1.compareTo(p2);
                     }
                 }

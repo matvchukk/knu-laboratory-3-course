@@ -4,11 +4,13 @@ public class sProcess implements Comparable{
   public int cpudone;
   public int ionext;
   public int numblocked;
+
   public int priority;
   public int processIndex;
   public boolean isBlocked;
   public int blockingTime=100;
   public static int index=0;
+
   public sProcess (int cputime, int ioblocking,int priority ,int cpudone, int ionext, int numblocked) {
     this.cputime = cputime;
     this.ioblocking = ioblocking;
@@ -19,6 +21,7 @@ public class sProcess implements Comparable{
     this.processIndex = index;
     index++;
   }
+
   @Override
   public int compareTo(java.lang.Object o){
     sProcess otherProcess = (sProcess)o;

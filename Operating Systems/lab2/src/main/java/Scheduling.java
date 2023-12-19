@@ -18,7 +18,16 @@ public class Scheduling {
   private static int runtime = 1000;
   private static Vector processVector = new Vector();
   private static Results result = new Results("null","null",0);
-  private static String resultsFile = "C:\\Users\\Анастасія\\Desktop\\os p\\OS\\lab2\\Summary-Results";
+  //private static String resultsFile = "C:\\Users\\Анастасія\\os_lab2\\OS\\lab2\\Summary-Results";
+  private static String resultsFile = "Summary-Results";
+  PrintStream out;
+  {
+    try {
+      out = new PrintStream(new FileOutputStream(resultsFile));
+    } catch (FileNotFoundException e) {
+      throw new RuntimeException(e);
+    }
+  }
 
   private static void Init(String file) {
     File f = new File(file);
@@ -92,7 +101,7 @@ public class Scheduling {
 //      System.out.println("Usage: 'java Scheduling <INIT FILE>'");
 //      System.exit(-1);
 //    }
-    File f = new File("C:\\Users\\Анастасія\\Desktop\\os p\\OS\\lab2\\src\\main\\resources\\scheduling.conf");
+    File f = new File("C:\\Users\\Анастасія\\Desktop\\os_lab2\\OS\\lab2\\src\\main\\resources\\scheduling.conf");
     if (!(f.exists())) {
       System.out.println("Scheduling: error, file '" + f.getName() + "' does not exist.");
       System.exit(-1);
@@ -102,7 +111,7 @@ public class Scheduling {
       System.exit(-1);
     }
     System.out.println("Working...");
-    Init("C:\\Users\\Анастасія\\Desktop\\os p\\OS\\lab2\\src\\main\\resources\\scheduling.conf");
+    Init("C:\\Users\\Анастасія\\Desktop\\os_lab2\\OS\\lab2\\src\\main\\resources\\scheduling.conf");
     if (processVector.size() < processnum) {
       i = 0;
       while (processVector.size() < processnum) {       

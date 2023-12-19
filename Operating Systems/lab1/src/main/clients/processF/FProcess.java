@@ -29,7 +29,7 @@ public class FProcess {
                 }
                 return;
             }
-            Utils.writeMessage(socketChannel, "STATUS: HARD FAIL " + "F"
+            Utils.writeMessage(socketChannel, "STATUS: SOFT FAIL " + "F"
                     + ", attempt " + (currentAttempt + 1) + " of " + maxAttempts);
             ++currentAttempt;
             Thread.sleep(10);
